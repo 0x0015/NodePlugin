@@ -8,6 +8,8 @@ OBJS = imgui/imgui.cpp.o \
        imgui/backends/imgui_impl_sdl.cpp.o \
        imgui/backends/imgui_impl_opengl2.cpp.o
 
+
+
 all: $(OBJS)
 
 imgui/%.cpp.o: imgui/%.cpp
