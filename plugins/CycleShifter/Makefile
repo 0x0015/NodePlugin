@@ -44,7 +44,7 @@ endif
 ifeq ($(WIN32),true)
 BUILD_CXX_FLAGS += -I../../common/SDL2/x86_64-w64-mingw32/include
 LINK_OPTS += -L../../common/SDL2/x86_64-w64-mingw32/lib -l:libSDL2.a -l:libSDL2main.a -l:libSDL2_test.a
-#LINK_OPTS += -L../../common/win_opengl -l:libopengl32.a
+LINK_OPTS += -L../../common/win_opengl -l:OpenGL32.Lib
 #lINK_OPTS += -L/usr/x86_64-w64-mingw32/lib
 LINK_OPTS += -L../../dpf/build -l:libdgl-opengl.a
 #LINK_OPTS += -l:libdgl.a
