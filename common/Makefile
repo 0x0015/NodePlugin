@@ -9,12 +9,13 @@ OBJS = imgui/imgui.cpp.o \
        imgui/backends/imgui_impl_opengl2.cpp.o
 
 
-
 all: $(OBJS)
 
 imgui/%.cpp.o: imgui/%.cpp
 	echo $(BUILD_CXX_FLAGS)
-	$(CXX) $< $(BUILD_CXX_FLAGS) -I. -Wno-unused-parameter -c -o $@
+	$(CXX) $< $(BUILD_CXX_FLAGS) -I. -Wno-unused-parameter $(LINK_OPTS_G) -c -o $@
 
 clean:
+	rm -f imgui/*.o
+	rm -f imgui/backends/*.o
 	rm -f *.[od] */*.[od]

@@ -2,6 +2,7 @@
 #define DISTRHO_PLUGIN_CYCLE_SHIFTER_HPP_INCLUDED
 
 #include "DistrhoPlugin.hpp"
+#include "GUI.hpp"
 #define BUFFER_SIZE 11025
 
 START_NAMESPACE_DISTRHO
@@ -82,8 +83,8 @@ Works best with long/sustained sounds (e.g. strings, pads etc.), sounds like a w
 
 private:
     float fInputVolume;
-    //bool GUIdone;
-    //std::thread GUIthread;
+    bool GUIdone;
+    std::thread GUIthread;
     //float CycleBuffer[BUFFER_SIZE]; // buffer to store the cycle in
     int OutIndex;                   // index for playing the buffer
     int InCount;                    // counts how many samples we've recorded

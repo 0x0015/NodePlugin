@@ -1,5 +1,5 @@
 imgui/backends/imgui_impl_sdl.cpp.o: imgui/backends/imgui_impl_sdl.cpp \
- /usr/include/stdc-predef.h imgui/imgui.h imgui/imconfig.h \
+ /usr/include/stdc-predef.h /usr/include/imgui.h /usr/include/imconfig.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h \
@@ -9,20 +9,21 @@ imgui/backends/imgui_impl_sdl.cpp.o: imgui/backends/imgui_impl_sdl.cpp \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
  /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
  /usr/include/strings.h /usr/include/assert.h \
- imgui/backends/imgui_impl_sdl.h /usr/include/SDL2/SDL.h \
- /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
- /usr/include/SDL2/SDL_config.h /usr/include/SDL2/SDL_platform.h \
- /usr/include/SDL2/begin_code.h /usr/include/SDL2/close_code.h \
- /usr/include/sys/types.h /usr/include/bits/types.h \
- /usr/include/bits/timesize.h /usr/include/bits/typesizes.h \
- /usr/include/bits/time64.h /usr/include/bits/types/clock_t.h \
- /usr/include/bits/types/clockid_t.h /usr/include/bits/types/time_t.h \
- /usr/include/bits/types/timer_t.h /usr/include/bits/stdint-intn.h \
- /usr/include/endian.h /usr/include/bits/endian.h \
- /usr/include/bits/endianness.h /usr/include/bits/byteswap.h \
- /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
- /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
- /usr/include/bits/types/__sigset_t.h \
+ imgui/backends/imgui_impl_sdl.h /usr/local/include/SDL2/SDL.h \
+ /usr/local/include/SDL2/SDL_main.h /usr/local/include/SDL2/SDL_stdinc.h \
+ /usr/local/include/SDL2/SDL_config.h \
+ /usr/local/include/SDL2/SDL_platform.h \
+ /usr/local/include/SDL2/begin_code.h \
+ /usr/local/include/SDL2/close_code.h /usr/include/sys/types.h \
+ /usr/include/bits/types.h /usr/include/bits/timesize.h \
+ /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
+ /usr/include/bits/types/clock_t.h /usr/include/bits/types/clockid_t.h \
+ /usr/include/bits/types/time_t.h /usr/include/bits/types/timer_t.h \
+ /usr/include/bits/stdint-intn.h /usr/include/endian.h \
+ /usr/include/bits/endian.h /usr/include/bits/endianness.h \
+ /usr/include/bits/byteswap.h /usr/include/bits/uintn-identity.h \
+ /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/types/sigset_t.h /usr/include/bits/types/__sigset_t.h \
  /usr/include/bits/types/struct_timeval.h \
  /usr/include/bits/types/struct_timespec.h \
  /usr/include/bits/pthreadtypes.h /usr/include/bits/thread-shared-types.h \
@@ -55,12 +56,13 @@ imgui/backends/imgui_impl_sdl.cpp.o: imgui/backends/imgui_impl_sdl.cpp \
  /usr/include/bits/fp-fast.h \
  /usr/include/bits/mathcalls-helper-functions.h \
  /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h /usr/include/SDL2/SDL_assert.h \
- /usr/include/SDL2/SDL_atomic.h /usr/include/SDL2/SDL_audio.h \
- /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_endian.h \
- /usr/include/SDL2/SDL_mutex.h /usr/include/SDL2/SDL_thread.h \
- /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_clipboard.h \
- /usr/include/SDL2/SDL_cpuinfo.h \
+ /usr/include/bits/iscanonical.h /usr/local/include/SDL2/SDL_assert.h \
+ /usr/local/include/SDL2/SDL_atomic.h /usr/local/include/SDL2/SDL_audio.h \
+ /usr/local/include/SDL2/SDL_error.h /usr/local/include/SDL2/SDL_endian.h \
+ /usr/local/include/SDL2/SDL_mutex.h /usr/local/include/SDL2/SDL_thread.h \
+ /usr/local/include/SDL2/SDL_rwops.h \
+ /usr/local/include/SDL2/SDL_clipboard.h \
+ /usr/local/include/SDL2/SDL_cpuinfo.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/immintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/mmintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/xmmintrin.h \
@@ -129,28 +131,34 @@ imgui/backends/imgui_impl_sdl.cpp.o: imgui/backends/imgui_impl_sdl.cpp \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/clflushoptintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/wbnoinvdintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/pkuintrin.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
- /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_rect.h \
- /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_blendmode.h \
- /usr/include/SDL2/SDL_keyboard.h /usr/include/SDL2/SDL_keycode.h \
- /usr/include/SDL2/SDL_scancode.h /usr/include/SDL2/SDL_mouse.h \
- /usr/include/SDL2/SDL_joystick.h /usr/include/SDL2/SDL_gamecontroller.h \
- /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
- /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
- /usr/include/SDL2/SDL_filesystem.h /usr/include/SDL2/SDL_haptic.h \
- /usr/include/SDL2/SDL_hints.h /usr/include/SDL2/SDL_loadso.h \
- /usr/include/SDL2/SDL_log.h /usr/include/SDL2/SDL_messagebox.h \
- /usr/include/SDL2/SDL_metal.h /usr/include/SDL2/SDL_power.h \
- /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
- /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
- /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_syswm.h \
- /usr/include/X11/Xlib.h /usr/include/X11/X.h \
- /usr/include/X11/Xfuncproto.h /usr/include/X11/Xosdefs.h \
- /usr/include/X11/Xatom.h
+ /usr/local/include/SDL2/SDL_events.h /usr/local/include/SDL2/SDL_video.h \
+ /usr/local/include/SDL2/SDL_pixels.h /usr/local/include/SDL2/SDL_rect.h \
+ /usr/local/include/SDL2/SDL_surface.h \
+ /usr/local/include/SDL2/SDL_blendmode.h \
+ /usr/local/include/SDL2/SDL_keyboard.h \
+ /usr/local/include/SDL2/SDL_keycode.h \
+ /usr/local/include/SDL2/SDL_scancode.h \
+ /usr/local/include/SDL2/SDL_mouse.h \
+ /usr/local/include/SDL2/SDL_joystick.h \
+ /usr/local/include/SDL2/SDL_gamecontroller.h \
+ /usr/local/include/SDL2/SDL_sensor.h /usr/local/include/SDL2/SDL_quit.h \
+ /usr/local/include/SDL2/SDL_gesture.h \
+ /usr/local/include/SDL2/SDL_touch.h \
+ /usr/local/include/SDL2/SDL_filesystem.h \
+ /usr/local/include/SDL2/SDL_haptic.h /usr/local/include/SDL2/SDL_hints.h \
+ /usr/local/include/SDL2/SDL_loadso.h /usr/local/include/SDL2/SDL_log.h \
+ /usr/local/include/SDL2/SDL_messagebox.h \
+ /usr/local/include/SDL2/SDL_metal.h /usr/local/include/SDL2/SDL_power.h \
+ /usr/local/include/SDL2/SDL_render.h /usr/local/include/SDL2/SDL_shape.h \
+ /usr/local/include/SDL2/SDL_system.h /usr/local/include/SDL2/SDL_timer.h \
+ /usr/local/include/SDL2/SDL_version.h \
+ /usr/local/include/SDL2/SDL_locale.h /usr/local/include/SDL2/SDL_misc.h \
+ /usr/local/include/SDL2/SDL_syswm.h /usr/include/X11/Xlib.h \
+ /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
+ /usr/include/X11/Xosdefs.h /usr/include/X11/Xatom.h
 /usr/include/stdc-predef.h:
-imgui/imgui.h:
-imgui/imconfig.h:
+/usr/include/imgui.h:
+/usr/include/imconfig.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:
@@ -167,13 +175,13 @@ imgui/imconfig.h:
 /usr/include/strings.h:
 /usr/include/assert.h:
 imgui/backends/imgui_impl_sdl.h:
-/usr/include/SDL2/SDL.h:
-/usr/include/SDL2/SDL_main.h:
-/usr/include/SDL2/SDL_stdinc.h:
-/usr/include/SDL2/SDL_config.h:
-/usr/include/SDL2/SDL_platform.h:
-/usr/include/SDL2/begin_code.h:
-/usr/include/SDL2/close_code.h:
+/usr/local/include/SDL2/SDL.h:
+/usr/local/include/SDL2/SDL_main.h:
+/usr/local/include/SDL2/SDL_stdinc.h:
+/usr/local/include/SDL2/SDL_config.h:
+/usr/local/include/SDL2/SDL_platform.h:
+/usr/local/include/SDL2/begin_code.h:
+/usr/local/include/SDL2/close_code.h:
 /usr/include/sys/types.h:
 /usr/include/bits/types.h:
 /usr/include/bits/timesize.h:
@@ -247,16 +255,16 @@ imgui/backends/imgui_impl_sdl.h:
 /usr/include/bits/mathcalls.h:
 /usr/include/bits/mathcalls-narrow.h:
 /usr/include/bits/iscanonical.h:
-/usr/include/SDL2/SDL_assert.h:
-/usr/include/SDL2/SDL_atomic.h:
-/usr/include/SDL2/SDL_audio.h:
-/usr/include/SDL2/SDL_error.h:
-/usr/include/SDL2/SDL_endian.h:
-/usr/include/SDL2/SDL_mutex.h:
-/usr/include/SDL2/SDL_thread.h:
-/usr/include/SDL2/SDL_rwops.h:
-/usr/include/SDL2/SDL_clipboard.h:
-/usr/include/SDL2/SDL_cpuinfo.h:
+/usr/local/include/SDL2/SDL_assert.h:
+/usr/local/include/SDL2/SDL_atomic.h:
+/usr/local/include/SDL2/SDL_audio.h:
+/usr/local/include/SDL2/SDL_error.h:
+/usr/local/include/SDL2/SDL_endian.h:
+/usr/local/include/SDL2/SDL_mutex.h:
+/usr/local/include/SDL2/SDL_thread.h:
+/usr/local/include/SDL2/SDL_rwops.h:
+/usr/local/include/SDL2/SDL_clipboard.h:
+/usr/local/include/SDL2/SDL_cpuinfo.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/immintrin.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/mmintrin.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/xmmintrin.h:
@@ -325,38 +333,38 @@ imgui/backends/imgui_impl_sdl.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/clflushoptintrin.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/wbnoinvdintrin.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/pkuintrin.h:
-/usr/include/SDL2/SDL_events.h:
-/usr/include/SDL2/SDL_video.h:
-/usr/include/SDL2/SDL_pixels.h:
-/usr/include/SDL2/SDL_rect.h:
-/usr/include/SDL2/SDL_surface.h:
-/usr/include/SDL2/SDL_blendmode.h:
-/usr/include/SDL2/SDL_keyboard.h:
-/usr/include/SDL2/SDL_keycode.h:
-/usr/include/SDL2/SDL_scancode.h:
-/usr/include/SDL2/SDL_mouse.h:
-/usr/include/SDL2/SDL_joystick.h:
-/usr/include/SDL2/SDL_gamecontroller.h:
-/usr/include/SDL2/SDL_sensor.h:
-/usr/include/SDL2/SDL_quit.h:
-/usr/include/SDL2/SDL_gesture.h:
-/usr/include/SDL2/SDL_touch.h:
-/usr/include/SDL2/SDL_filesystem.h:
-/usr/include/SDL2/SDL_haptic.h:
-/usr/include/SDL2/SDL_hints.h:
-/usr/include/SDL2/SDL_loadso.h:
-/usr/include/SDL2/SDL_log.h:
-/usr/include/SDL2/SDL_messagebox.h:
-/usr/include/SDL2/SDL_metal.h:
-/usr/include/SDL2/SDL_power.h:
-/usr/include/SDL2/SDL_render.h:
-/usr/include/SDL2/SDL_shape.h:
-/usr/include/SDL2/SDL_system.h:
-/usr/include/SDL2/SDL_timer.h:
-/usr/include/SDL2/SDL_version.h:
-/usr/include/SDL2/SDL_locale.h:
-/usr/include/SDL2/SDL_misc.h:
-/usr/include/SDL2/SDL_syswm.h:
+/usr/local/include/SDL2/SDL_events.h:
+/usr/local/include/SDL2/SDL_video.h:
+/usr/local/include/SDL2/SDL_pixels.h:
+/usr/local/include/SDL2/SDL_rect.h:
+/usr/local/include/SDL2/SDL_surface.h:
+/usr/local/include/SDL2/SDL_blendmode.h:
+/usr/local/include/SDL2/SDL_keyboard.h:
+/usr/local/include/SDL2/SDL_keycode.h:
+/usr/local/include/SDL2/SDL_scancode.h:
+/usr/local/include/SDL2/SDL_mouse.h:
+/usr/local/include/SDL2/SDL_joystick.h:
+/usr/local/include/SDL2/SDL_gamecontroller.h:
+/usr/local/include/SDL2/SDL_sensor.h:
+/usr/local/include/SDL2/SDL_quit.h:
+/usr/local/include/SDL2/SDL_gesture.h:
+/usr/local/include/SDL2/SDL_touch.h:
+/usr/local/include/SDL2/SDL_filesystem.h:
+/usr/local/include/SDL2/SDL_haptic.h:
+/usr/local/include/SDL2/SDL_hints.h:
+/usr/local/include/SDL2/SDL_loadso.h:
+/usr/local/include/SDL2/SDL_log.h:
+/usr/local/include/SDL2/SDL_messagebox.h:
+/usr/local/include/SDL2/SDL_metal.h:
+/usr/local/include/SDL2/SDL_power.h:
+/usr/local/include/SDL2/SDL_render.h:
+/usr/local/include/SDL2/SDL_shape.h:
+/usr/local/include/SDL2/SDL_system.h:
+/usr/local/include/SDL2/SDL_timer.h:
+/usr/local/include/SDL2/SDL_version.h:
+/usr/local/include/SDL2/SDL_locale.h:
+/usr/local/include/SDL2/SDL_misc.h:
+/usr/local/include/SDL2/SDL_syswm.h:
 /usr/include/X11/Xlib.h:
 /usr/include/X11/X.h:
 /usr/include/X11/Xfuncproto.h:

@@ -17,10 +17,8 @@
 #include <iostream>
 
 // Main code
-bool GUIThreadRunning = false;
-int mainLoopGUI(bool* done)
+int mainLoop(bool* done)
 {
-	GUIThreadRunning = true;
     // Setup SDL
     // (Some versions of SDL before <2.0.10 appears to have performance/stalling issues on a minority of Windows systems,
     // depending on whether SDL_INIT_GAMECONTROLLER is enabled or disabled.. updating to latest version of SDL is recommended!)
@@ -109,10 +107,10 @@ int mainLoopGUI(bool* done)
     SDL_GL_DeleteContext(gl_context);
     SDL_DestroyWindow(window);
     SDL_Quit();
-	GUIThreadRunning = false;
+
     return 0;
 }
 
-std::thread startGUIThread(bool* done){
-	return(std::thread(mainLoopGUI, done));
+std::thread startThread(bool* done){
+	return(std::thread(mainLoop, done));
 }

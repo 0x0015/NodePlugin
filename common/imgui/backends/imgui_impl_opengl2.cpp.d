@@ -1,6 +1,6 @@
 imgui/backends/imgui_impl_opengl2.cpp.o: \
  imgui/backends/imgui_impl_opengl2.cpp /usr/include/stdc-predef.h \
- imgui/imgui.h imgui/imconfig.h \
+ /usr/include/imgui.h /usr/include/imconfig.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h \
@@ -19,8 +19,8 @@ imgui/backends/imgui_impl_opengl2.cpp.o: \
  /usr/include/GL/gl.h /usr/include/GL/glext.h \
  /usr/include/KHR/khrplatform.h
 /usr/include/stdc-predef.h:
-imgui/imgui.h:
-imgui/imconfig.h:
+/usr/include/imgui.h:
+/usr/include/imconfig.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/float.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stdarg.h:
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include/stddef.h:

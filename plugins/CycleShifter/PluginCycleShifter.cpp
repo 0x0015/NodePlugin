@@ -1,4 +1,5 @@
 #include "PluginCycleShifter.hpp"
+//#include "GUI.hpp"
 #include <iostream>
 
 START_NAMESPACE_DISTRHO
@@ -82,13 +83,13 @@ void DistrhoPluginCycleShifter::activate()
     InCount = 0;
     ReadWrite = false;
     EnvOld = 0.0f;
-    //GUIdone = false;
-    //GUIthread = startThread(&GUIdone);
+    GUIdone = false;
+    GUIthread = startThread(&GUIdone);
 }
 
 void DistrhoPluginCycleShifter::deactivate(){
-	//GUIdone = true;
-	//GUIthread.join();
+	GUIdone = true;
+	GUIthread.join();
 }
 
 void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint32_t frames)
