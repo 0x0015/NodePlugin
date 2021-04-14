@@ -62,7 +62,7 @@ CXXFLAGS   += -fvisibility-inlines-hidden
 endif
 
 BUILD_C_FLAGS   = $(BASE_FLAGS) -std=c99 $(CFLAGS)
-BUILD_CXX_FLAGS = $(BASE_FLAGS) -std=c++11 $(CXXFLAGS) $(CPPFLAGS)
+BUILD_CXX_FLAGS = $(BASE_FLAGS) -std=c++14 $(CXXFLAGS) $(CPPFLAGS)
 
 ifeq ($(MACOS),true)
 # 'no-undefined' is always enabled

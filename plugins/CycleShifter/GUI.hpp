@@ -8,15 +8,33 @@
 // See imgui_impl_sdl.cpp for details.
 #pragma once
 #include "imgui.h"
-#include "backends/imgui_impl_sdl.h"
-#include "backends/imgui_impl_opengl2.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl2.h"
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <thread>
 #include <iostream>
+#include "imnodes.h"
+#include "imnodes_internal.h"
+#include <libtcc.h>
+void ImGuiEx_BeginColumn()
+{
+    ImGui::BeginGroup();
+}
 
-// Main code
+void ImGuiEx_NextColumn()
+{
+    ImGui::EndGroup();
+    ImGui::SameLine();
+    ImGui::BeginGroup();
+}
+
+void ImGuiEx_EndColumn()
+{
+    ImGui::EndGroup();
+}
+
 int mainLoop(bool* done)
 {
     // Setup SDL
@@ -43,6 +61,7 @@ int mainLoop(bool* done)
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImNodes::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -55,10 +74,12 @@ int mainLoop(bool* done)
     ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
     ImGui_ImplOpenGL2_Init();
 
-   
+
+    bool show_node_graph = true;
+
 
     // Our state
-    bool show_demo_window = true;
+    //bool show_demo_window = true;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
@@ -84,10 +105,25 @@ int mainLoop(bool* done)
         ImGui_ImplOpenGL2_NewFrame();
         ImGui_ImplSDL2_NewFrame(window);
         ImGui::NewFrame();
+	
+	ImGui::SetNextWindowPos(ImVec2(0, 0));
+        ImGui::SetNextWindowSize(io.DisplaySize);
+        ImGui::Begin("Content", nullptr,
+            ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoSavedSettings |
+            ImGuiWindowFlags_NoBringToFrontOnFocus);
+        // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui
+	const int hardcoded_node_id = 1;
 
-        // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-        if (show_demo_window)
-            ImGui::ShowDemoWindow(&show_demo_window);
+	ImNodes::BeginNodeEditor();
+
+	ImNodes::BeginNode(hardcoded_node_id);
+	ImGui::Dummy(ImVec2(80.0f, 45.0f));
+	ImNodes::EndNode();
+
+	ImNodes::EndNodeEditor();
+	
+	ImGui::End();
 
         // Rendering
         ImGui::Render();
@@ -98,11 +134,11 @@ int mainLoop(bool* done)
         ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
         SDL_GL_SwapWindow(window);
     }
-
     // Cleanup
     ImGui_ImplOpenGL2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
+    ImNodes::DestroyContext();
 
     SDL_GL_DeleteContext(gl_context);
     SDL_DestroyWindow(window);
@@ -110,7 +146,20 @@ int mainLoop(bool* done)
 
     return 0;
 }
+/*
+int main(){
 
+	bool done = false;
+	//mainLoop(&done);
+	std::thread mainLoopThread(mainLoop, &done);
+	while(!done){
+		//nothing
+		std::cout<<"outside of thread"<<std::endl;
+	}
+	mainLoopThread.join();
+	return(0);
+}
+*/
 std::thread startThread(bool* done){
 	return(std::thread(mainLoop, done));
 }

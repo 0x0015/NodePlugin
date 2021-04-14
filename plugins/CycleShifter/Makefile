@@ -13,7 +13,7 @@ NAME = CycleShifter
 # Files to build
 
 FILES_DSP = \
-	PluginCycleShifter.cpp
+	PluginCycleShifter.cpp imnodes.cpp
 
 FILES_UI  = #\
 	#ArtworkCycleShifter.cpp \
@@ -31,8 +31,14 @@ PKG_CONFIG ?= pkg-config
 
 LINK_OPTS += ../../common/imgui/*.cpp.o
 LINK_OPTS += ../../common/imgui/backends/*.cpp.o
+LINK_OPTS += ../../common/tcc/libtcc.a
+#LINK_OPTS += ../../common/imgui-node-editor/*.cpp.o
 
+#BUILD_CXX_FLAGS := -I../../common $(BUILD_CXX_FLAGS)
 BUILD_CXX_FLAGS := -I../../common/imgui $(BUILD_CXX_FLAGS)
+BUILD_CXX_FLAGS := -I../../common/imgui/backends $(BUILD_CXX_FLAGS)
+BUILD_CXX_FLAGS := -I../../common/tcc $(BUILD_CXX_FLAGS)
+#BUILD_CXX_FLAGS := -I../../common/imgui-node-editor $(BUILD_CXX_FLAGS)
 # --------------------------------------------------------------
 # Link dependencies
 
