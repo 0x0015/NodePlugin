@@ -1,7 +1,7 @@
 #include "PluginCycleShifter.hpp"
 //#include "GUI.hpp"
 #include <iostream>
-
+#include "TccGen.hpp"
 START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
