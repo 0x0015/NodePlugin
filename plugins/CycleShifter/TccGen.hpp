@@ -3,6 +3,7 @@
 #include <functional>
 #include <thread>
 #include <libtcc.h>
+#include "getDllPath.hpp"
 //#include <template>
 template<typename T, typename T2> class TccGen{
 public:
@@ -15,6 +16,14 @@ public:
 	T (*func)(T2);
 	T defaultValue;
 	void generateCodeFunc(){
+		if (s){
+		    tcc_delete(s);
+		    s = tcc_new();//frees the main symbol
+		}
+		std::string libPath = getDllPath("CycleShifter-vst.dll");
+		//std::string libPath = "";
+		std::cout<<"Tcc lib path: " << libPath<<std::endl;
+		tcc_set_lib_path(s, libPath.c_str());
 		/* MUST BE CALLED before any compilation */
 		tcc_set_output_type(s, TCC_OUTPUT_MEMORY);
 	
@@ -47,10 +56,17 @@ public:
 	void generateCode(){
 		generated = false;
 		error = false;
+		if(codeGenThread.joinable()){
+			codeGenThread.join();
+		}
 		codeGenThread = std::thread([this] {generateCodeFunc(); });
 		if(waitForCodeGen){
 			codeGenThread.join();
 		}
+	}
+	void generateCode(bool wait){
+		waitForCodeGen = wait;
+		generateCode();
 	}
 	T call(T2 arg){
 		if(generated && (!error)){

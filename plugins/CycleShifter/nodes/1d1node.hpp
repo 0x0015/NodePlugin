@@ -15,14 +15,6 @@ public:
 			inputs.push_back(std::make_tuple(node, stream, whichInput));
 		}
 	}
-	double getInput(int input){
-		float output=0;
-		for(int i=0;i<inputs.size();i++){
-			if(std::get<2>(inputs[i]) == input){
-				output+=(std::get<0>(inputs[i]))->streams()[std::get<1>(inputs[i])];
-			}
-		}
-	}
 	std::vector<double> streams(){
 		std::vector<double> output;
 		output.push_back(codeGenerator->call(getInput(0)));
@@ -35,6 +27,22 @@ public:
 		codeGenerator->generateCode();
 	}
 	void renderBody(){
+		if(ImGui::Button("Compile")){
+			codeGenerator->generateCode();
+		}
+		ImGui::SameLine();
+		std::string compilerStatus;
+		if(codeGenerator->generated){
+			compilerStatus = "Compiled!";
+		}else{
+			if(codeGenerator->error){
+				compilerStatus = "Error.";
+			}else{
+				compilerStatus = "Uncompiled";
+			}
+		}
+		
+		ImGui::Text(compilerStatus.c_str());
 		auto cpos = editor.GetCursorPosition();
 		//editor.SetText(code);
 		editor.Render("CodeEditor");
