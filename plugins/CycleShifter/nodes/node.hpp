@@ -20,12 +20,13 @@ public:
 	std::string name;
 	bool deletable = true;
 	double getInput(int input){
-		float output=0;
+		double output=0;
 		for(int i=0;i<inputs.size();i++){
 			if(std::get<2>(inputs[i]) == input){
 				output+=(std::get<0>(inputs[i]))->streams()[std::get<1>(inputs[i])];
 			}
 		}
+		return(output);
 	}
 	 void setInput(audioNode* node, int stream, int whichInput){
 		return;

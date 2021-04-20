@@ -108,9 +108,13 @@ void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint3
     float* out = outputs[0];
 
     for (uint32_t i=0; i<frames; ++i){
-	inputNode->value = (double)(*in++);
-	*out++ = (float)outputNode->computeOutput();
-        //*out++ = *in++;
+	double input = (double)(*in++);
+	
+	inputNode->value = input;
+	double computedValue = outputNode->computeOutput();
+	float output = (float)computedValue;
+	*out++ = output;
+    	
     }
     return;
 
