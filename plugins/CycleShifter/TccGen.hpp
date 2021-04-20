@@ -10,15 +10,15 @@ public:
 	std::thread codeGenThread;
 	bool generated = false;
 	bool error = false;
-	std::string code;
-	TCCState* s;
+	std::string* code = 0;
+	TCCState* s = 0;
 	T (*func)(T2);
 	T defaultValue;
 	void generateCodeFunc(){
 		/* MUST BE CALLED before any compilation */
 		tcc_set_output_type(s, TCC_OUTPUT_MEMORY);
 	
-		if (tcc_compile_string(s, code.c_str()) == -1){
+		if (tcc_compile_string(s, (*code).c_str()) == -1){
 		     generated = false;
 		    error = true;
 		    return;
@@ -58,9 +58,12 @@ public:
 		}
 		return(defaultValue);
 	}
-	TccGen(TCCState* tccState, std::string c, bool wait = true){
-		s = tccState;
+	TccGen(std::string* c, bool wait = true){
+		s = tcc_new();
 		code = c;
 		waitForCodeGen = wait;
+	}
+	~TccGen(){
+		tcc_delete(s);
 	}
 };

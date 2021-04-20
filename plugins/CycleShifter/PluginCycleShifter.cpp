@@ -14,7 +14,10 @@ DistrhoPluginCycleShifter::DistrhoPluginCycleShifter()
       ReadWrite(false),
       EnvOld(0.0f)
 {
-
+	inputNode = new audioNodeInput(&nodes, 0);
+	outputNode = new audioNodeOutput(&nodes, 1);
+	nodes.push_back(inputNode);
+	nodes.push_back(outputNode);
 }
 
 // -----------------------------------------------------------------------
@@ -84,7 +87,7 @@ void DistrhoPluginCycleShifter::activate()
     ReadWrite = false;
     EnvOld = 0.0f;
     GUIdone = false;
-    GUIthread = startThread(&GUIdone);
+    GUIthread = startThread(&GUIdone, &nodes);
 }
 
 void DistrhoPluginCycleShifter::deactivate(){
@@ -105,7 +108,9 @@ void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint3
     float* out = outputs[0];
 
     for (uint32_t i=0; i<frames; ++i){
-        *out++ = *in++;
+	inputNode->value = (double)(*in++);
+	*out++ = (float)outputNode->computeOutput();
+        //*out++ = *in++;
     }
     return;
 

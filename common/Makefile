@@ -22,10 +22,10 @@ imgui/backends%.cpp.o: imgui/backends/%.cpp
 
 ifeq ($(WIN32), true)
 tcc/libtcc.a:
-	cd tcc; ./configure --enable-static --config-mingw32 -cc=$(CC); make
+	cd tcc; ./configure --enable-static --config-mingw32 --extra-cflags=-fPIC -cc=$(CC); make
 else
 tcc/libtcc.a:
-	cd tcc; ./configure --enable-static -cc=$(CC); make
+	cd tcc; ./configure --enable-static --extra-cflags=-fPIC -cc=$(CC); make
 endif
 
 clean:

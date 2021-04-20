@@ -13,7 +13,7 @@ NAME = CycleShifter
 # Files to build
 
 FILES_DSP = \
-	PluginCycleShifter.cpp imnodes.cpp
+	PluginCycleShifter.cpp TextEditor.cpp
 
 FILES_UI  = #\
 	#ArtworkCycleShifter.cpp \
@@ -43,6 +43,7 @@ BUILD_CXX_FLAGS := -I../../common/tcc $(BUILD_CXX_FLAGS)
 # Link dependencies
 
 LINK_OPTS += -lm
+
 ifeq ($(LINUX), true)
 #LINK_OPTS += -L../../common/SDL2/x86_64-linux/lib
 LINK_OPTS += $(shell $(PKG_CONFIG) --libs sdl2) 
@@ -61,6 +62,8 @@ LINK_OPTS += -lmingw32 -mwindows  -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi
 #LINK_OPTS += $(DGL_LIBS)
 LINK_OPTS += -fno-stack-protector -fstack-protector
 LINK_OPTS += $(OBJS_opengl)
+else
+LINK_OPTS += -ldl
 endif
 
 
