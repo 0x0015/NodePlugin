@@ -5,6 +5,7 @@
 #include "dValuenode2.hpp"
 #include "output.hpp"
 #include "input.hpp"
+#include "4Func/audioNode4Func.hpp"
 
 void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 	ImGui::Text("Node Creation");
@@ -16,6 +17,26 @@ void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 	if(ImGui::Selectable("2 Values")){
 		(*nodeInc)++;
 		nodes->push_back(new audioNoded2Value(nodes, *nodeInc));
+		return;
+	}
+	if(ImGui::Selectable("Addition")){
+		(*nodeInc)++;
+		nodes->push_back(new audioNodeAddition(nodes, *nodeInc));
+		return;
+	}
+	if(ImGui::Selectable("Subtraction")){
+		(*nodeInc)++;
+		nodes->push_back(new audioNodeSubtraction(nodes, *nodeInc));
+		return;
+	}
+	if(ImGui::Selectable("Multiplication")){
+		(*nodeInc)++;
+		nodes->push_back(new audioNodeMultiplication(nodes, *nodeInc));
+		return;
+	}
+	if(ImGui::Selectable("Division")){
+		(*nodeInc)++;
+		nodes->push_back(new audioNodeDivision(nodes, *nodeInc));
 		return;
 	}
 	if(ImGui::Selectable("C node")){

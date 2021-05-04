@@ -15,7 +15,7 @@ libs:
 	$(MAKE) -C dpf/dgl ../build/libdgl-opengl.a
 
 plugins: libs
-	$(MAKE) all -C plugins/CycleShifter
+	$(MAKE) all -C plugins/NodePlugin
 
 ifneq ($(CROSS_COMPILING),true)
 gen: plugins dpf/utils/lv2_ttl_generator
@@ -35,7 +35,7 @@ endif
 clean:
 	$(MAKE) clean -C dpf/dgl
 	$(MAKE) clean -C dpf/utils/lv2-ttl-generator
-	$(MAKE) clean -C plugins/CycleShifter
+	$(MAKE) clean -C plugins/NodePlugin
 	$(MAKE) clean -C common
 	rm -rf bin build
 

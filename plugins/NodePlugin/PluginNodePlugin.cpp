@@ -1,4 +1,4 @@
-#include "PluginCycleShifter.hpp"
+#include "PluginNodePlugin.hpp"
 //#include "GUI.hpp"
 #include <iostream>
 #include "TccGen.hpp"

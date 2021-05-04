@@ -36,17 +36,17 @@ Works best with long/sustained sounds (e.g. strings, pads etc.), sounds like a w
 
     const char* getMaker() const noexcept override
     {
-        return "ndc Plugs";
+        return "0x15";
     }
 
     const char* getHomePage() const override
     {
-        return "https://github.com/DISTRHO/ndc-Plugs";
+        return "https://github.com/0x0015/VSTPlugin";
     }
 
     const char* getLicense() const noexcept override
     {
-        return "MIT";
+        return "N/A";
     }
 
     uint32_t getVersion() const noexcept override
@@ -56,7 +56,7 @@ Works best with long/sustained sounds (e.g. strings, pads etc.), sounds like a w
 
     int64_t getUniqueId() const noexcept override
     {
-        return d_cconst('C', 'S', 'f', 't');
+        return d_cconst('O', 'X', 'I', 'S');
     }
 
     // -------------------------------------------------------------------

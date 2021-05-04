@@ -7,13 +7,13 @@
 # --------------------------------------------------------------
 # Project name, used for binaries
 
-NAME = CycleShifter
+NAME = NodePlugin
 
 # --------------------------------------------------------------
 # Files to build
 
 FILES_DSP = \
-	PluginCycleShifter.cpp TextEditor.cpp
+	PluginNodePlugin.cpp TextEditor.cpp
 
 FILES_UI  = #\
 	#ArtworkCycleShifter.cpp \

@@ -22,7 +22,7 @@ imgui/backends%.cpp.o: imgui/backends/%.cpp
 
 ifeq ($(WIN32), true)
 tcc/libtcc.a:
-	cd tcc; ./configure --enable-static --config-mingw32 --extra-cflags=-fPIC -cc=$(CC); make
+	cd tcc; ./configure --enable-static --config-mingw32 --extra-cflags=-fPIC --enable-cross --with-libgcc -cc=$(CC); make
 else
 tcc/libtcc.a:
 	cd tcc; ./configure --enable-static --extra-cflags=-fPIC -cc=$(CC); make
