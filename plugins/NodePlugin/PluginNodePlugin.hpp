@@ -1,5 +1,5 @@
-#ifndef DISTRHO_PLUGIN_CYCLE_SHIFTER_HPP_INCLUDED
-#define DISTRHO_PLUGIN_CYCLE_SHIFTER_HPP_INCLUDED
+#ifndef DISTRHO_PLUGIN_NODE_PLUGIN_HPP_INCLUDED
+#define DISTRHO_PLUGIN_NODE_PLUGIN_HPP_INCLUDED
 
 #include "DistrhoPlugin.hpp"
 #include "GUI.hpp"
@@ -9,7 +9,7 @@ START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
 
-class DistrhoPluginCycleShifter : public Plugin
+class DistrhoPluginNodePlugin : public Plugin
 {
 public:
     enum Parameters {
@@ -17,7 +17,7 @@ public:
         kParameterCount
     };
 
-    DistrhoPluginCycleShifter();
+    DistrhoPluginNodePlugin();
 
 protected:
     // -------------------------------------------------------------------
@@ -25,13 +25,12 @@ protected:
 
     const char* getLabel() const noexcept override
     {
-        return "CycleShifter";
+        return "Node Plugin";
     }
 
     const char* getDescription() const override
     {
-        return "Reads in a cycle's-worth of the input signal, then (once the whole cycle's been read in) outputs it again, on top of the current output.\n\
-Works best with long/sustained sounds (e.g. strings, pads etc.), sounds like a weird kind of gentle distortion.";
+        return "A node graph of more simple effects to give more interesting resuls.";
     }
 
     const char* getMaker() const noexcept override
@@ -98,11 +97,11 @@ private:
 
     //float DoProcess(float a);
 
-    DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DistrhoPluginCycleShifter)
+    DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DistrhoPluginNodePlugin)
 };
 
 // -----------------------------------------------------------------------
 
 END_NAMESPACE_DISTRHO
 
-#endif  // DISTRHO_PLUGIN_CYCLE_SHIFTER_HPP_INCLUDED
+#endif  // DISTRHO_PLUGIN_NODE_PLUGIN_HPP_INCLUDED

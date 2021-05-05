@@ -6,7 +6,7 @@ START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------
 
-DistrhoPluginCycleShifter::DistrhoPluginCycleShifter()
+DistrhoPluginNodePlugin::DistrhoPluginNodePlugin()
     : Plugin(kParameterCount, 1, 0), // 1 program, 0 states
       fInputVolume(1.0f),
       OutIndex(0),
@@ -31,7 +31,7 @@ DistrhoPluginCycleShifter::DistrhoPluginCycleShifter()
 // -----------------------------------------------------------------------
 // Init
 
-void DistrhoPluginCycleShifter::initParameter(uint32_t index, Parameter& parameter)
+void DistrhoPluginNodePlugin::initParameter(uint32_t index, Parameter& parameter)
 {
     parameter.hints      = kParameterIsAutomable;
     parameter.ranges.min = -90.0f;
@@ -44,7 +44,7 @@ void DistrhoPluginCycleShifter::initParameter(uint32_t index, Parameter& paramet
     
 }
 
-void DistrhoPluginCycleShifter::initProgramName(uint32_t index, String& programName)
+void DistrhoPluginNodePlugin::initProgramName(uint32_t index, String& programName)
 {
     if (index != 0)
         return;
@@ -55,7 +55,7 @@ void DistrhoPluginCycleShifter::initProgramName(uint32_t index, String& programN
 // -----------------------------------------------------------------------
 // Internal data
 
-float DistrhoPluginCycleShifter::getParameterValue(uint32_t index) const
+float DistrhoPluginNodePlugin::getParameterValue(uint32_t index) const
 {
     switch(index)
     {
@@ -66,7 +66,7 @@ float DistrhoPluginCycleShifter::getParameterValue(uint32_t index) const
     }
 }
 
-void DistrhoPluginCycleShifter::setParameterValue(uint32_t index, float value)
+void DistrhoPluginNodePlugin::setParameterValue(uint32_t index, float value)
 {
     switch(index)
     {
@@ -76,7 +76,7 @@ void DistrhoPluginCycleShifter::setParameterValue(uint32_t index, float value)
     }
 }
 
-void DistrhoPluginCycleShifter::loadProgram(uint32_t index)
+void DistrhoPluginNodePlugin::loadProgram(uint32_t index)
 {
     if (index != 0)
         return;
@@ -87,7 +87,7 @@ void DistrhoPluginCycleShifter::loadProgram(uint32_t index)
 // -----------------------------------------------------------------------
 // Process
 
-void DistrhoPluginCycleShifter::activate()
+void DistrhoPluginNodePlugin::activate()
 {
     //std::memset(CycleBuffer, 0, sizeof(float)*BUFFER_SIZE);
     OutIndex = 0;
@@ -98,12 +98,12 @@ void DistrhoPluginCycleShifter::activate()
     GUIthread = startThread(&GUIdone, &nodes);
 }
 
-void DistrhoPluginCycleShifter::deactivate(){
+void DistrhoPluginNodePlugin::deactivate(){
 	GUIdone = true;
 	GUIthread.join();
 }
 
-void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint32_t frames)
+void DistrhoPluginNodePlugin::run(const float** inputs, float** outputs, uint32_t frames)
 {
    // const float* in  =  inputs[0];
    // /**/  float* out = outputs[0];
@@ -161,7 +161,7 @@ void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint3
 
 Plugin* createPlugin()
 {
-    return new DistrhoPluginCycleShifter();
+    return new DistrhoPluginNodePlugin();
 }
 
 // -----------------------------------------------------------------------

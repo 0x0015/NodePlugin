@@ -12,7 +12,7 @@ public:
 	}
 	std::vector<double> streams(){
 		std::vector<double> output;
-		output.push_back(abs(getInput(0) + getInput(1)));
+		output.push_back(abs(getInput(0)));
 		return(output);
 	}
 	void renderBody(){
@@ -22,7 +22,7 @@ public:
 	}
 	audioNodeAbsoluteValue(std::vector<audioNode*>* n, int id){
 		nodeId = id;
-		inputNum = 2;
+		inputNum = 1;
 		streamNum = 1;
 		nodes = n;
 		name = "Absolute Value node";
