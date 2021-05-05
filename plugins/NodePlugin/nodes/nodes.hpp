@@ -8,6 +8,7 @@
 #include "input.hpp"
 #include "Math/audioNodeMath.hpp"
 #include "waves/audioNodeWaves.hpp"
+#include "Logic/audioNodeLogic.hpp"
 
 void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 	ImGui::Text("Node Creation");
@@ -90,6 +91,44 @@ void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 			nodes->push_back(new audioNodeSeededRandom(nodes, *nodeInc));
 			return;
 		}	
+		ImGui::EndMenu();
+	}
+	if(ImGui::BeginMenu("Logic")){
+		if(ImGui::Selectable("And")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeAnd(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Or")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeOr(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Xor")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeXor(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Not")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeNot(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Greater than")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeGreaterThan(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Less than")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeLessThan(nodes, *nodeInc));
+			return;
+		}
+		if(ImGui::Selectable("Equal to")){
+			(*nodeInc)++;
+			nodes->push_back(new audioNodeEqualTo(nodes, *nodeInc));
+			return;
+		}
 		ImGui::EndMenu();
 	}
 	if(ImGui::BeginMenu("Waves")){
