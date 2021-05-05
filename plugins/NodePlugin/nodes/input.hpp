@@ -6,6 +6,7 @@
 class audioNodeInput : public audioNode{
 public:
 	double value;
+	int inputnum = -1;
 	void setInput(audioNode* node, int stream, int whichInput){
 		
 	}
@@ -15,7 +16,11 @@ public:
 		return(output);
 	}
 	void renderBody(){
-		ImGui::Text("Input");
+		std::string inputText = "Input";
+		if(inputnum != -1){
+			inputText = inputText + " " + std::to_string(inputnum);
+		}
+		ImGui::Text(inputText.c_str());
 	}
 	audioNodeInput(std::vector<audioNode*>* n, int id){
 		nodeId = id;

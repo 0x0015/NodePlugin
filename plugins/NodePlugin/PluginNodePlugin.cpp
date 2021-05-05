@@ -14,10 +14,18 @@ DistrhoPluginCycleShifter::DistrhoPluginCycleShifter()
       ReadWrite(false),
       EnvOld(0.0f)
 {
-	inputNode = new audioNodeInput(&nodes, 0);
-	outputNode = new audioNodeOutput(&nodes, 1);
-	nodes.push_back(inputNode);
-	nodes.push_back(outputNode);
+	inputNode1 = new audioNodeInput(&nodes, 0);
+	inputNode1->inputnum = 1;
+	outputNode1 = new audioNodeOutput(&nodes, 1);
+	outputNode1->outputnum = 1;
+	nodes.push_back(inputNode1);
+	nodes.push_back(outputNode1);
+	inputNode2 = new audioNodeInput(&nodes, 2);
+	inputNode2->inputnum = 2;
+	outputNode2 = new audioNodeOutput(&nodes, 3);
+	outputNode2->outputnum = 2;
+	nodes.push_back(inputNode2);
+	nodes.push_back(outputNode2);
 }
 
 // -----------------------------------------------------------------------
@@ -104,17 +112,25 @@ void DistrhoPluginCycleShifter::run(const float** inputs, float** outputs, uint3
    //     *out++ = DoProcess(*in++);
 
     // get the left and right audio inputs
-    const float* in  =  inputs[0];
-    float* out = outputs[0];
+    const float* in1  =  inputs[0];
+    float* out1 = outputs[0];
+    const float* in2  =  inputs[1];
+    float* out2 = outputs[1];
 
     for (uint32_t i=0; i<frames; ++i){
-	double input = (double)(*in++);
+	double input1 = (double)(*in1++);
 	
-	inputNode->value = input;
-	double computedValue = outputNode->computeOutput();
-	float output = (float)computedValue;
-	*out++ = output;
-    	
+	inputNode1->value = input1;
+	double computedValue1 = outputNode1->computeOutput();
+	float output1 = (float)computedValue1;
+	*out1++ = output1;
+
+    	double input2 = (double)(*in2++);
+	
+	inputNode2->value = input2;
+	double computedValue2 = outputNode2->computeOutput();
+	float output2 = (float)computedValue2;
+	*out2++ = output2;
     }
     return;
 

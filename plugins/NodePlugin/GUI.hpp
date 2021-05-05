@@ -75,7 +75,7 @@ int mainLoop(bool* done, std::vector<audioNode*>* nodes)
     int startingLinkNode = -1;
     int startingLinkStreamNum = -1;
 
-    int nodeNum = 2;
+    int nodeNum = 4;
     // Main loop
     //bool done = false;
     while (!(*done))

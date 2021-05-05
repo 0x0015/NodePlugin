@@ -86,8 +86,10 @@ private:
     bool GUIdone;
     std::thread GUIthread;
     std::vector<audioNode*> nodes;
-    audioNodeInput* inputNode;
-    audioNodeOutput* outputNode;
+    audioNodeInput* inputNode1;
+    audioNodeOutput* outputNode1;
+    audioNodeInput* inputNode2;
+    audioNodeOutput* outputNode2;
     //float CycleBuffer[BUFFER_SIZE]; // buffer to store the cycle in
     int OutIndex;                   // index for playing the buffer
     int InCount;                    // counts how many samples we've recorded
