@@ -1,14 +1,15 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "../TccGen.hpp"
+#include "../CppGen.hpp"
 #include "node.hpp"
 #include "../TextEditor.hpp"
 
 class audioNode1d1 : public audioNode{
 public:
-	TccGen<double, double>* codeGenerator;
+	CppGen<double, double>* codeGenerator;
 	std::string code;
+	std::string completeCode;
 	TextEditor editor;
 	void setInput(audioNode* node, int stream, int whichInput){
 		if(whichInput == 0){
@@ -28,6 +29,7 @@ public:
 	}
 	void renderBody(){
 		if(ImGui::Button("Compile")){
+			completeCode = "extern \"C\" {double run(double);}\n" + code;
 			codeGenerator->generateCode();
 		}
 		ImGui::SameLine();
@@ -43,6 +45,11 @@ public:
 		}
 		
 		ImGui::Text(compilerStatus.c_str());
+		if(codeGenerator->compilerOutput != ""){
+			if(ImGui::BeginPopupContextItem("Output")){
+				ImGui::Text(codeGenerator->compilerOutput.c_str());
+			}
+		}
 		auto cpos = editor.GetCursorPosition();
 		//editor.SetText(code);
 		editor.Render("CodeEditor");
@@ -56,10 +63,14 @@ public:
 		nodeId = id;
 		inputNum = 1;
 		streamNum = 1;
-		codeGenerator = new TccGen<double, double>(&code, false);
-		editor.SetLanguageDefinition(TextEditor::LanguageDefinition::C());
+#if defined(_WIN32) || defined(_WIN64)
+		codeGenerator = new CppGen<double, double>(&completeCode, false, getDllPath("NodePlugin-vst.dll") + "/Mingw-w64/mingw64/bin/g++.exe", "run");
+#else
+		codeGenerator = new CppGen<double, double>(&completeCode, false, "g++", "run");
+#endif
+		editor.SetLanguageDefinition(TextEditor::LanguageDefinition::CPlusPlus());
 		editor.SetText(code);
 		nodes = n;
-		name = "C node";
+		name = "Cpp node";
 	}
 };

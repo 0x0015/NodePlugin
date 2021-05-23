@@ -28,16 +28,16 @@ PKG_CONFIG ?= pkg-config
 
 #BUILD_CXX_FLAGS := ../../common/imgui/*.cpp.o $(BUILD_CXX_FLAGS)
 #BUILD_CXX_FLAGS := ../../common/imgui/backends/*.cpp.o $(BUILD_CXX_FLAGS)
-
+BUILD_CXX_FLAGS += --std=c++17
 LINK_OPTS += ../../common/imgui/*.cpp.o
 LINK_OPTS += ../../common/imgui/backends/*.cpp.o
-LINK_OPTS += ../../common/tcc/libtcc.a
+#LINK_OPTS += ../../common/tcc/libtcc.a
 #LINK_OPTS += ../../common/imgui-node-editor/*.cpp.o
 
 #BUILD_CXX_FLAGS := -I../../common $(BUILD_CXX_FLAGS)
 BUILD_CXX_FLAGS := -I../../common/imgui $(BUILD_CXX_FLAGS)
 BUILD_CXX_FLAGS := -I../../common/imgui/backends $(BUILD_CXX_FLAGS)
-BUILD_CXX_FLAGS := -I../../common/tcc $(BUILD_CXX_FLAGS)
+#BUILD_CXX_FLAGS := -I../../common/tcc $(BUILD_CXX_FLAGS)
 #BUILD_CXX_FLAGS := -I../../common/imgui-node-editor $(BUILD_CXX_FLAGS)
 # --------------------------------------------------------------
 # Link dependencies
@@ -54,6 +54,7 @@ ifeq ($(WIN32),true)
 BUILD_CXX_FLAGS += -I../../common/SDL2/x86_64-w64-mingw32/include
 LINK_OPTS += -L../../common/SDL2/x86_64-w64-mingw32/lib -l:libSDL2.a -l:libSDL2main.a
 LINK_OPTS += -L../../common/win_opengl -l:OpenGL32.Lib
+LINK_OPTS += -L../../common/dlfcn-win32 -l:libdl.a
 #lINK_OPTS += -L/usr/x86_64-w64-mingw32/lib
 LINK_OPTS += -L../../dpf/build -l:libdgl-opengl.a
 #LINK_OPTS += -l:libdgl.a

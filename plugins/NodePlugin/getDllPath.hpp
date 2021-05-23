@@ -18,10 +18,10 @@ std::string getDllPath(std::string dll){
 			temp = temp + dllLocation.substr(i, 1);
 		}
 	}
-	return(output + "\\tcc");
+	return(output);
 }
 #else
 std::string getDllPath(std::string path){
-	return("/usr/lib/tcc");
+	return("/tmp");
 }
 #endif

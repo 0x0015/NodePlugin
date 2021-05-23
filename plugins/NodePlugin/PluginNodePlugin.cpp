@@ -1,7 +1,7 @@
 #include "PluginNodePlugin.hpp"
 //#include "GUI.hpp"
 #include <iostream>
-#include "TccGen.hpp"
+//#include "TccGen.hpp"
 START_NAMESPACE_DISTRHO
 
 // -----------------------------------------------------------------------

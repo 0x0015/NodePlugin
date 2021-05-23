@@ -144,7 +144,7 @@ void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 		}
 		ImGui::EndMenu();
 	}
-	if(ImGui::Selectable("C node")){
+	if(ImGui::Selectable("C++ node")){
 		(*nodeInc)++;
 		nodes->push_back(new audioNode1d1(nodes, *nodeInc));
 		return;
