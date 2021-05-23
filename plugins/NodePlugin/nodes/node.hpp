@@ -4,6 +4,8 @@
 #include <tuple>
 //#include "../TccGen.hpp"
 #include "imgui.h"
+#include "../json.hpp"
+using json = nlohmann::json;
 
 class audioNode{
 public:
@@ -19,6 +21,23 @@ public:
 	bool hovered = false;
 	std::string name;
 	bool deletable = true;
+	json serializeBasicInfo(){
+		json j;
+		j["name"] = name;
+		j["nodeId"] = nodeId;
+		//j["inputs"] = {};
+		for(int i=0;i<inputs.size();i++){
+			json inputsj;
+			inputsj["audioNode"] = std::get<0>(inputs[i])->nodeId;
+			inputsj["outputStream"] = std::get<1>(inputs[i]);
+			inputsj["inputStream"] = std::get<2>(inputs[i]);
+			j["inputs"].push_back(inputsj);
+		}
+		return(j);
+	}
+	virtual json serialize(){
+		return(serializeBasicInfo());
+	}
 	double getInput(int input){
 		double output=0;
 		for(int i=0;i<inputs.size();i++){

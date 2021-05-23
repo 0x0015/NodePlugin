@@ -11,6 +11,11 @@ public:
 	std::string code;
 	std::string completeCode;
 	TextEditor editor;
+	json serialize(){
+		json j = serializeBasicInfo();
+		j["code"] = code;
+		return(j);
+	}
 	void setInput(audioNode* node, int stream, int whichInput){
 		if(whichInput == 0){
 			inputs.push_back(std::make_tuple(node, stream, whichInput));

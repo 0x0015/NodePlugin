@@ -10,6 +10,14 @@
 #include "waves/audioNodeWaves.hpp"
 #include "Logic/audioNodeLogic.hpp"
 
+json serializeNodes(std::vector<audioNode*>* nodes){
+	json j;
+	for(int i=0;i<nodes->size();i++){
+		j.push_back((*nodes)[i]->serialize());
+	}
+	return(j);
+}
+
 void nodeCreationMenu(std::vector<audioNode*>* nodes, int* nodeInc){
 	ImGui::Text("Node Creation");
 	if(ImGui::BeginMenu("Values")){

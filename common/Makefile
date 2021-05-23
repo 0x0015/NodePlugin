@@ -7,6 +7,7 @@ OBJS = imgui/imgui.cpp.o \
        imgui/imgui_widgets.cpp.o \
        imgui/backends/imgui_impl_sdl.cpp.o \
        imgui/backends/imgui_impl_opengl2.cpp.o \
+       FileBrowser/ImGuiFileBrowser.cpp.o
        #tcc/libtcc.a
 
 
@@ -17,6 +18,9 @@ imgui/%.cpp.o: imgui/%.cpp
 	$(CXX) $< $(BUILD_CXX_FLAGS) -I. -Wno-unused-parameter $(LINK_OPTS_G) -c -o $@
 
 imgui/backends%.cpp.o: imgui/backends/%.cpp
+	echo $(BUILD_CXX_FLAGS)
+	$(CXX) $< $(BUILD_CXX_FLAGS) -I. -Wno-unused-parameter $(LINK_OPTS_G) -c -o $@
+FileBrowser/%.cpp.o: FileBrowser/%.cpp
 	echo $(BUILD_CXX_FLAGS)
 	$(CXX) $< $(BUILD_CXX_FLAGS) -I. -Wno-unused-parameter $(LINK_OPTS_G) -c -o $@
 
@@ -31,6 +35,6 @@ imgui/backends%.cpp.o: imgui/backends/%.cpp
 clean:
 	rm -f imgui/*.o
 	rm -f imgui/backends/*.o
-	rm -f imgui-node-editor/*.o
+	rm -f FileBrowser/*.o
 	rm -f *.[od] */*.[od]
 	#cd tcc; make clean

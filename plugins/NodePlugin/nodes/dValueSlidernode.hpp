@@ -9,6 +9,11 @@ public:
 	void setInput(audioNode* node, int stream, int whichInput){
 		
 	}
+	json serialize(){
+		json j = serializeBasicInfo();
+		j["value"] = value;
+		return(j);
+	}
 	std::vector<double> streams(){
 		std::vector<double> output;
 		output.push_back((double)value);

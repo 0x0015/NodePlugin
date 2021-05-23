@@ -21,7 +21,8 @@
 //#include "imnodes_internal.h"
 //#include <libtcc.h>
 #include "nodes/nodes.hpp"
-
+#include "ImGuiFileBrowser.h"
+#include "SimpleCppTextFileHandler/file.hpp"
 
 int mainLoop(bool* done, std::vector<audioNode*>* nodes)
 {
@@ -76,6 +77,8 @@ int mainLoop(bool* done, std::vector<audioNode*>* nodes)
     int startingLinkStreamNum = -1;
 
     int nodeNum = 4;
+
+    imgui_addons::ImGuiFileBrowser file_dialog;
     // Main loop
     //bool done = false;
     while (!(*done))
@@ -292,7 +295,50 @@ int mainLoop(bool* done, std::vector<audioNode*>* nodes)
 	//for(int i=0;i<nodes->size();i++){
 	//	(*nodes)[i]->nodeId = i;//reassigning all ids, to prevent confusion
 	//}
+	bool open = false;
+	bool save = false;
+	if(ImGui::BeginMainMenuBar()){
+		if(ImGui::BeginMenu("File")){
+			if(ImGui::MenuItem("Export Json")){
+				//ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".");
+				save = true;
+				//ImGui::EndMenu();
+			}
+		
+			if(ImGui::MenuItem("Import Json")){
+				open = true;
+				//ImGui::EndMenu();
+			}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
+	
+	if(open){
+        	ImGui::OpenPopup("Open File");
+	}
+    	if(save){
+    	    ImGui::OpenPopup("Save File");
+    	}
+    	    
+    	/* Optional third parameter. Support opening only compressed rar/zip files. 
+    	 * Opening any other file will show error, return false and won't close the dialog.
+    	 */
+    	if(file_dialog.showFileDialog("Open File", imgui_addons::ImGuiFileBrowser::DialogMode::OPEN, ImVec2(700, 310), ".json"))
+    	{
+    	    std::cout << file_dialog.selected_fn << std::endl;      // The name of the selected file or directory in case of Select Directory dialog mode
+    	    std::cout << file_dialog.selected_path << std::endl;    // The absolute path to the selected file
+    	}
+    	if(file_dialog.showFileDialog("Save File", imgui_addons::ImGuiFileBrowser::DialogMode::SAVE, ImVec2(700, 310), ".json"))
+    	{
+    	    std::cout << file_dialog.selected_fn << std::endl;      // The name of the selected file or directory in case of Select Directory dialog mode
+    	    std::cout << file_dialog.selected_path << std::endl;    // The absolute path to the selected file
+    	    std::cout << file_dialog.ext << std::endl;              // Access ext separately (For SAVE mode)
+	    writeFile(file_dialog.selected_path, serializeNodes(nodes).dump());
+    	    //Do writing of files based on extension here
+    	}
 
+	
         // Rendering
         ImGui::Render();
         glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
